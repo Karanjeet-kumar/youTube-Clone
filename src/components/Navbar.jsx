@@ -9,7 +9,7 @@ import { CgProfile } from "react-icons/cg";
 
 function Navbar() {
   return (
-    <div className='flex justify-between px-6 py-2'>
+    <div className='flex justify-between fixed top-0 w-[100%] bg-white px-6 py-2'>
       <div className='flex items-center'>
         <AiOutlineMenu className='text-xl cursor-pointer hover:bg-gray-200 duration-200'/>
         <ImYoutube2 size={"28px"} className='w-28 cursor-pointer'/>
