@@ -93,7 +93,7 @@ function Sidebar() {
     },
   ];
   return (
-    <div className="px-6 w-[15%] h-[calc(100vh-3.625rem)] overflow-y-scroll overflow-x-hidden">
+    <div className="px-6 w-[15%] h-[calc(100vh-3.625rem)] overflow-y-scroll hidden-scroll overflow-x-hidden">
       <div className="space-y-2 items-center">
         {SidebarItems.map((item) => {
           return (
