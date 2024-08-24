@@ -15,10 +15,10 @@ function Navbar() {
         <ImYoutube2 size={"28px"} className='w-28 cursor-pointer'/>
       </div>
       <div className='flex w-[35%]'>
-        <div className='w-[100%] px-3 border rounded-l-full'>
+        <div className='w-[100%] px-5 border border-gray-400 rounded-l-full'>
           <input type="text" placeholder='Search' className="outline-none" />
         </div>
-        <button className='px-4 border bg-gray-100 rounded-r-full'>
+        <button className='px-4 border border-gray-400 bg-gray-100 rounded-r-full'>
           <CiSearch size={"28px"}/>
         </button>
         <IoMdMic size={"28px"} className='ml-1 border rounded-full p-1 cursor-pointer hover:bg-gray-200 duration-200'/>
