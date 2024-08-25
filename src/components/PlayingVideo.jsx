@@ -5,6 +5,7 @@ import ReactPlayer from "react-player";
 import { abbreviateNumber } from "js-abbreviation-number";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { AiOutlineLike } from "react-icons/ai";
+import SuggestedVideo from "./SuggestedVideo";
 
 function PlayingVideo() {
   const [video, setVideo] = useState();
@@ -13,6 +14,7 @@ function PlayingVideo() {
 
   useEffect(() => {
     fetchVideoDetails();
+    fetchRelatedVideos();
   }, [id]);
 
   const fetchVideoDetails = () => {
@@ -21,6 +23,13 @@ function PlayingVideo() {
       setVideo(res);
     });
   };
+
+  const fetchRelatedVideos = () => {
+    fetchData(`video/related-contents/?id=${id}`).then((res) => {
+      console.log(res);
+      setrelatedVideo(res);
+    });
+  }
 
   return (
     <div className="flex justify-center flex-row w-[calc(100%-56px)] mt-16">
@@ -81,6 +90,12 @@ function PlayingVideo() {
           <div className="flex gap-x-6 font-semibold rounded-xl mt-4 text-xl">
             {video?.stats?.comments} <p>Comments</p>
           </div>
+        </div>
+        <div>
+          {relatedVideo?.contents?.map((item, index) => {
+            if (item?.type !== "video") return false;
+            return <SuggestedVideo key={index} video={item?.video} />
+          })}
         </div>
       </div>
     </div>
