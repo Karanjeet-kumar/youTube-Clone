@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import { ImYoutube2 } from "react-icons/im";
 import { CiSearch } from "react-icons/ci";
@@ -6,8 +6,20 @@ import { IoMdMic } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { FaRegBell } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
+import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const searchQueryHandler=(event)=>{
+    if((event?.key==="Enter" || event==="searchButton") && searchQuery?.length>0){
+      navigate(`/search/${searchQuery}`)
+      setSearchQuery("");
+    }
+  };
+
   return (
     <div className='flex justify-between fixed top-0 w-[100%] bg-white px-6 py-2'>
       <div className='flex items-center'>
@@ -16,12 +28,18 @@ function Navbar() {
       </div>
       <div className='flex w-[35%]'>
         <div className='w-[100%] px-5 border border-gray-400 rounded-l-full'>
-          <input type="text" placeholder='Search' className="outline-none" />
+          <input type="text" placeholder='Search' className="outline-none"
+          onChange={(e)=>setSearchQuery(e.target.value)}
+          onKeyUp={searchQueryHandler}
+          value={searchQuery}
+          />
         </div>
-        <button className='px-4 border border-gray-400 bg-gray-100 rounded-r-full'>
+        <button className='px-4 border border-gray-400 bg-gray-100 rounded-r-full'
+        onClick={()=>searchQueryHandler("searchButton")}
+        >
           <CiSearch size={"28px"}/>
         </button>
-        <IoMdMic size={"28px"} className='ml-1 border rounded-full p-1 cursor-pointer hover:bg-gray-200 duration-200'/>
+        <IoMdMic size={"28px"} className='ml-1 border border-gray-600 rounded-full p-1 cursor-pointer hover:bg-gray-200 duration-200'/>
       </div>
       <div className='flex space-x-5'>
         <RiVideoAddLine size={"28px"} />

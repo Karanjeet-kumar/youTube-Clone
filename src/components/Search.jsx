@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar"
 import SearchCard from './SearchCard';
 
 function Search() {
-  const {result, setResult}=useState();
+  const [result, setResult]=useState();
   const {searchQuery}=useParams();
 
   useEffect(()=>{
@@ -21,9 +21,9 @@ function Search() {
 
   return (
     <div>
-      <div className='mt-24 flex-row]'>
+      <div className='mt-16 flex flex-row justify-between'>
         <Sidebar />
-        <div className='h-[calc(100vh-3.325rem)] overflow-y-scroll overflow-x-hidden'>
+        <div className='h-[calc(100vh-3.625rem)] overflow-y-scroll overflow-x-hidden'>
           <div className='grid grid-col-1 gap-2 p-2'>
             {result?.map((item, index)=>{
               if(item?.type!=="video") return false;
